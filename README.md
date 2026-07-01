@@ -46,6 +46,8 @@ O crescimento se acelera a partir de 2016 e vem acompanhado de aumento real na q
 | 2016 | 12,97% |
 | 2017 | 11,59% |
 
+![Margem de lucro por ano](images/margem_por_ano.png)
+
 Isso mostra que a empresa cresceu em **escala**, mas não em **eficiência**: o lucro aumentou porque se vendeu mais, não porque cada venda passou a ser mais rentável.
 
 ### O problema está concentrado em Furniture
@@ -53,6 +55,8 @@ Isso mostra que a empresa cresceu em **escala**, mas não em **eficiência**: o 
 - **Technology**: maior volume de vendas e boa margem — crescimento saudável
 - **Office Supplies**: comportamento equilibrado entre vendas, lucro e margem
 - **Furniture**: grande volume de vendas, mas rentabilidade comprometida
+
+![Profit por subcategoria de Furniture](images/profit_furniture_subcategoria.png)
 
 Dentro de Furniture, ao nível de subcategoria:
 
@@ -62,6 +66,8 @@ Dentro de Furniture, ao nível de subcategoria:
 - **Tables**: prejuízo elevado (-17,7 mil)
 
 O desconto médio é maior nessas subcategorias problemáticas, mas não explica sozinho o resultado negativo — o problema não é só desconto.
+
+![Evolução de vendas por categoria](images/evolucao_categorias.png)
 
 ### Sazonalidade
 
