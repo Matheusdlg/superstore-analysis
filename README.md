@@ -14,13 +14,6 @@ A empresa vende bastante, mas será que consegue transformar isso em lucro de fo
 
 ## Metodologia
 
-
-## Metodologia
-
-A análise foi dividida em três notebooks, cada um cobrindo uma etapa do raciocínio:
-
-## Metodologia
-
 A análise foi conduzida em etapas, partindo do geral para o específico, e está dividida em três notebooks:
 
 1. **[`01_eda.ipynb`](notebooks/01_eda.ipynb)** — exploração inicial: limpeza, tipos de dados, verificação de nulos/duplicados, conversão de datas, totais gerais de vendas e lucro
