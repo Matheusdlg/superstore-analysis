@@ -80,13 +80,15 @@ A partir disso, vamos:
 ## Estrutura do repositório
 
 ```
-├── notebooks/
-│   └── Projeto_03_Superstore.ipynb   # código completo da análise
 ├── data/
-│   └── Sample - Superstore.csv       # dataset original
+│   └── Sample - Superstore.csv       # Dataset original utilizado na análise
+├── notebooks/
+│   ├── 01_eda.ipynb                  # Análise Exploratória de Dados inicial e limpeza
+│   ├── 02_category_analysis.ipynb    # Investigação profunda de Categorias e Subcategorias
+│   └── 03_time_analysis.ipynb        # Análise de Tendências Temporais e Sazonalidade
 ├── images/
-│   └── ...                           # gráficos exportados
-└── README.md
+│   └── ...                           # Gráficos exportados utilizados no relatório
+└── README.md                         # Documentação do projeto
 ```
 
 ## Ferramentas utilizadas
