@@ -14,15 +14,18 @@ A empresa vende bastante, mas será que consegue transformar isso em lucro de fo
 
 ## Metodologia
 
-A análise foi conduzida em etapas, partindo do geral para o específico:
 
-1. **Exploração inicial** — limpeza, tipos de dados, verificação de nulos/duplicados
-2. **Análise por categoria** (Furniture, Office Supplies, Technology) — vendas, lucro e desconto médio
-3. **Investigação aprofundada de Furniture**, a categoria com o resultado mais preocupante, descendo ao nível de subcategoria (Chairs, Furnishings, Bookcases, Tables)
-4. **Criação da métrica Profit Margin** (`Profit / Sales`) para comparar eficiência, não apenas valores absolutos
-5. **Análise temporal** — evolução de vendas, quantidade, lucro e margem por ano
-6. **Análise de sazonalidade** — identificação de padrões mensais
-7. **Evolução das categorias ao longo dos anos** — comparação de trajetórias
+## Metodologia
+
+A análise foi dividida em três notebooks, cada um cobrindo uma etapa do raciocínio:
+
+## Metodologia
+
+A análise foi conduzida em etapas, partindo do geral para o específico, e está dividida em três notebooks:
+
+1. **[`01_eda.ipynb`](notebooks/01_eda.ipynb)** — exploração inicial: limpeza, tipos de dados, verificação de nulos/duplicados, conversão de datas, totais gerais de vendas e lucro
+2. **[`02_category_analysis.ipynb`](notebooks/02_category_analysis.ipynb)** — análise por categoria (Furniture, Office Supplies, Technology) por vendas, lucro e desconto médio; investigação aprofundada de Furniture, a categoria com o resultado mais preocupante, descendo ao nível de subcategoria (Chairs, Furnishings, Bookcases, Tables); criação da métrica Profit Margin (`Profit / Sales`) para comparar eficiência, não apenas valores absolutos; top 10 produtos
+3. **[`03_time_analysis.ipynb`](notebooks/03_time_analysis.ipynb)** — análise temporal: evolução de vendas, quantidade, lucro e margem por ano; análise de sazonalidade com identificação de padrões mensais; evolução das categorias ao longo dos anos comparando trajetórias
 
 ## Principais descobertas
 
@@ -107,6 +110,8 @@ A partir disso, vamos:
 ## Como executar
 
 1. Clone o repositório
-2. Abra `notebooks/Projeto_03_Superstore.ipynb` no Google Colab ou Jupyter
+2. Abra qualquer um dos notebooks em `notebooks/` no Google Colab ou Jupyter
 3. Ajuste o caminho de leitura do CSV para `data/Sample - Superstore.csv`
 4. Execute as células em ordem
+
+Cada notebook é independente e pode ser executado sozinho — todos incluem os imports e o carregamento do dataset no início.
