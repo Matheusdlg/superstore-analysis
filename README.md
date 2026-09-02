@@ -2,32 +2,17 @@
 
 Exploratory analysis of Superstore sales data (2014–2017), focused on understanding not just how much the company sells, but whether that growth translates into healthy profitability.
 
-## About the dataset
-
-- **9,994 rows** and **21 columns**
-- No null values and no duplicate records
-- Each row represents an item within an order (a single `Order ID` can repeat when an order contains more than one product)
-- This is the classic **Sample Superstore** dataset (widely used for Tableau/Power BI practice, sourced from Kaggle), not real company data
-
 ## Business question
 
 The company sells a lot, but is it turning that into profit efficiently? Or is sales growth masking profitability problems in specific parts of the business?
 
-## Methodology
+---
 
-The analysis moved from general to specific:
-
-1. **Initial exploration** — data cleaning, data types, null/duplicate checks
-2. **Category-level analysis** (Furniture, Office Supplies, Technology) — sales, profit, and average discount
-3. **Deep dive into Furniture**, the category with the most concerning results, breaking it down to subcategory level (Chairs, Furnishings, Bookcases, Tables)
-4. **Creation of a Profit Margin metric** (`Profit / Sales`) to compare efficiency, not just absolute values
-5. **Time-based analysis** — evolution of sales, quantity, profit, and margin by year
-6. **Seasonality analysis** — identification of monthly patterns
-7. **Category evolution over time** — comparing trajectories across categories
-
-## Key findings
+## Key Findings
 
 ### 1. Sales, profit, and quantity grew year over year
+
+![Annual Sales, Quantity and Profit](images/ss_chart1_annual.png)
 
 | Year | Sales   | Quantity | Profit |
 |------|---------|----------|--------|
@@ -38,7 +23,11 @@ The analysis moved from general to specific:
 
 Growth accelerates from 2016 onward and is accompanied by a real increase in units sold — not just a price effect.
 
+---
+
 ### 2. Profit margin, however, stayed flat (~12%)
+
+![Profit Margin by Year](images/ss_chart2_margin.png)
 
 | Year | Margin |
 |------|--------|
@@ -47,17 +36,17 @@ Growth accelerates from 2016 onward and is accompanied by a real increase in uni
 | 2016 | 12.97% |
 | 2017 | 11.59% |
 
-![Profit margin by year](images/margem_por_ano.png)
-
 This shows the company grew in **scale**, but not in **efficiency**: profit went up because more was sold, not because each sale became more profitable.
 
+---
+
 ### 3. The problem is concentrated in Furniture
+
+![Profit by Furniture Subcategory](images/ss_chart3_furniture.png)
 
 - **Technology**: highest sales volume and good margin — healthy growth
 - **Office Supplies**: balanced behavior across sales, profit, and margin
 - **Furniture**: high sales volume, but compromised profitability
-
-![Profit by Furniture subcategory](images/profit_furniture_subcategoria.png)
 
 Within Furniture, at the subcategory level:
 
@@ -68,11 +57,31 @@ Within Furniture, at the subcategory level:
 
 Average discount is higher in these problematic subcategories, but discount alone doesn't explain the negative result.
 
-![Sales evolution by category](images/evolucao_categorias.png)
+---
 
-### 4. Seasonality
+### 4. Category trajectories diverge over time
 
-Sales are lowest in January and February, and rise consistently in the last quarter (September–December), likely driven by year-end purchases.
+![Sales Evolution by Category](images/ss_chart4_categories.png)
+
+Technology and Office Supplies show steady, healthy growth year over year. Furniture's trajectory is more volatile and lags behind the other two categories — reinforcing that its profitability issue isn't a one-off, but a sustained pattern across the analyzed period.
+
+---
+
+### 5. Clear seasonality, concentrated in Q4
+
+![Monthly Seasonality](images/ss_chart5_seasonality.png)
+
+Sales are lowest in January and February, and rise consistently in the last quarter (September–December), likely driven by year-end purchases. This pattern repeats across the years in the dataset, suggesting it's structural and can be planned for.
+
+---
+
+### 6. A small group of subcategories drives most of the profit
+
+![Top 10 Subcategories by Profit](images/ss_chart6_top10.png)
+
+The top 10 subcategories by profit are dominated by Technology and Office Supplies items, with Chairs as the strongest Furniture performer. This concentration reinforces where investment and attention are already paying off — and highlights, by contrast, how much Tables and Bookcases are dragging down the Furniture category.
+
+---
 
 ## Conclusion
 
@@ -84,19 +93,42 @@ Based on this, next steps would be to:
 - **Direct more investment and attention toward Technology and Chairs**, replicating what's working there across the rest of the portfolio.
 - With these two actions, the goal is to **raise the profit margin beyond the current 12%** in upcoming cycles, without relying solely on higher sales volume.
 
+---
+
+## About the dataset
+
+- **9,994 rows** and **21 columns**
+- No null values and no duplicate records
+- Each row represents an item within an order (a single `Order ID` can repeat when an order contains more than one product)
+- This is the classic **Sample Superstore** dataset (widely used for Tableau/Power BI practice, sourced from Kaggle), not real company data
+
+---
+
 ## Repository structure
 
 ```
+superstore-analysis
+│
 ├── data/
 │   └── Sample - Superstore.csv       # Original dataset used in the analysis
+│
 ├── notebooks/
 │   ├── 01_eda.ipynb                  # Initial exploratory data analysis and cleaning
 │   ├── 02_category_analysis.ipynb    # Deep dive into categories and subcategories
 │   └── 03_time_analysis.ipynb        # Time trend and seasonality analysis
+│
 ├── images/
-│   └── ...                           # Charts exported for the report
-└── README.md                         # Project documentation
+│   ├── ss_chart1_annual.png
+│   ├── ss_chart2_margin.png
+│   ├── ss_chart3_furniture.png
+│   ├── ss_chart4_categories.png
+│   ├── ss_chart5_seasonality.png
+│   └── ss_chart6_top10.png
+│
+└── README.md
 ```
+
+---
 
 ## Tools used
 
@@ -104,6 +136,8 @@ Based on this, next steps would be to:
 - Pandas
 - Matplotlib
 - Google Colab
+
+---
 
 ## How to run
 
