@@ -75,11 +75,11 @@ Sales are lowest in January and February, and rise consistently in the last quar
 
 ---
 
-### 6. A small group of subcategories drives most of the profit
+### 6. A handful of products drive a disproportionate share of sales
 
-![Top 10 Subcategories by Profit](images/ss_chart6_top10.png)
+![Top 10 Products by Sales](images/ss_chart6_top10.png)
 
-The top 10 subcategories by profit are dominated by Technology and Office Supplies items, with Chairs as the strongest Furniture performer. This concentration reinforces where investment and attention are already paying off — and highlights, by contrast, how much Tables and Bookcases are dragging down the Furniture category.
+The Canon imageCLASS 2200 Advanced Copier alone generated $61,600 in sales — more than double the second-place item. The top 10 list is dominated by office equipment (copiers, binding systems, printers) rather than everyday office supplies, suggesting that a small set of high-ticket items plays an outsized role in overall revenue.
 
 ---
 
