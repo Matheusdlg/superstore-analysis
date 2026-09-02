@@ -1,110 +1,118 @@
-# Projeto Superstore — Análise de Vendas e Rentabilidade
+# Superstore Sales & Profitability Analysis
+Exploratory analysis of retail sales data (2014–2017) investigating whether revenue growth translated into real profitability gains.
 
-Análise exploratória dos dados de vendas da Superstore (2014–2017), com foco em entender não só quanto a empresa vende, mas se esse crescimento se traduz em lucro de forma saudável.
+## Business Question
 
-## Sobre o dataset
+The company sells a lot — but is it actually becoming more profitable, or just selling more of the same?
 
-- **9.994 linhas** e **21 colunas**
-- Sem valores nulos e sem registros duplicados
-- Cada linha representa um item de um pedido (um mesmo `Order ID` pode se repetir quando o pedido tem mais de um produto)
+---
 
-## Pergunta de negócio
+## Key Findings
 
-A empresa vende bastante, mas será que consegue transformar isso em lucro de forma eficiente? Ou o crescimento em vendas está mascarando problemas de rentabilidade em partes específicas do negócio?
+### 1. Sales, quantity and profit all grew — but not efficiency
 
-## Metodologia
+![Annual Performance](images/ss_chart1_annual.png)
 
-A análise foi conduzida em etapas, partindo do geral para o específico, e está dividida em três notebooks:
+Revenue grew from **$484k (2014)** to **$733k (2017)**, a 51% increase over four years. Quantity sold rose proportionally, confirming this is real volume growth — not just price inflation. Profit followed the same upward trend.
 
-1. **[`01_eda.ipynb`](notebooks/01_eda.ipynb)** — exploração inicial: limpeza, tipos de dados, verificação de nulos/duplicados, conversão de datas, totais gerais de vendas e lucro
-2. **[`02_category_analysis.ipynb`](notebooks/02_category_analysis.ipynb)** — análise por categoria (Furniture, Office Supplies, Technology) por vendas, lucro e desconto médio; investigação aprofundada de Furniture, a categoria com o resultado mais preocupante, descendo ao nível de subcategoria (Chairs, Furnishings, Bookcases, Tables); criação da métrica Profit Margin (`Profit / Sales`) para comparar eficiência, não apenas valores absolutos; top 10 produtos
-3. **[`03_time_analysis.ipynb`](notebooks/03_time_analysis.ipynb)** — análise temporal: evolução de vendas, quantidade, lucro e margem por ano; análise de sazonalidade com identificação de padrões mensais; evolução das categorias ao longo dos anos comparando trajetórias
+---
 
-## Principais descobertas
+### 2. Profit margin stayed flat at ~12% throughout
 
-### Vendas, lucro e quantidade cresceram ano a ano
+![Profit Margin by Year](images/ss_chart2_margin.png)
 
-| Ano | Vendas | Quantidade | Profit |
-|---|---|---|---|
-| 2014 | 484.247 | 7.581 | 49.543 |
-| 2015 | 470.532 | 7.979 | 61.618 |
-| 2016 | 609.205 | 9.837 | 81.795 |
-| 2017 | 733.215 | 12.476 | 93.439 |
+Despite consistent revenue growth, profit margin hovered around **11–13% every year**. The company scaled its operations but did not improve financial efficiency — every dollar of revenue kept generating roughly the same profit. This signals an opportunity: fixing low-margin segments could unlock gains without needing more sales volume.
 
-O crescimento se acelera a partir de 2016 e vem acompanhado de aumento real na quantidade de produtos vendidos — não é só efeito de preço.
+---
 
-### A margem de lucro, porém, ficou estável (~12%)
+### 3. The profitability problem is concentrated in Furniture
 
-| Ano | Margem |
-|---|---|
-| 2014 | 11,81% |
-| 2015 | 11,75% |
-| 2016 | 12,97% |
-| 2017 | 11,59% |
+![Profit by Furniture Sub-Category](images/ss_chart3_furniture.png)
 
-![Margem de lucro por ano](images/margem_por_ano.png)
+Furniture has solid sales but a critical profitability issue at the sub-category level:
 
-Isso mostra que a empresa cresceu em **escala**, mas não em **eficiência**: o lucro aumentou porque se vendeu mais, não porque cada venda passou a ser mais rentável.
+- **Tables**: **-$17,700** in total profit — the biggest drag on the business
+- **Bookcases**: **-$3,400** in total profit
+- **Chairs**: **+$26,500** — profitable and high-volume
+- **Furnishings**: positive, smaller scale
 
-### O problema está concentrado em Furniture
+Tables and Bookcases are actively destroying value. Higher average discounts on these sub-categories contribute to the losses, but discount alone doesn't fully explain the negative margins — the underlying cost structure is also a factor.
 
-- **Technology**: maior volume de vendas e boa margem — crescimento saudável
-- **Office Supplies**: comportamento equilibrado entre vendas, lucro e margem
-- **Furniture**: grande volume de vendas, mas rentabilidade comprometida
+---
 
-![Profit por subcategoria de Furniture](images/profit_furniture_subcategoria.png)
+### 4. Technology leads growth; Furniture lags behind
 
-Dentro de Furniture, ao nível de subcategoria:
+![Sales Evolution by Category](images/ss_chart4_categories.png)
 
-- **Chairs**: maior volume e Profit positivo (+26,5 mil)
-- **Furnishings**: vendas menores, Profit positivo
-- **Bookcases**: Profit negativo (-3,4 mil)
-- **Tables**: prejuízo elevado (-17,7 mil)
+Technology grew the fastest and maintains the healthiest margins. Office Supplies showed steady, balanced growth. Furniture grew in sales volume but without the profitability to match — a pattern that becomes more concerning when zooming into its sub-categories.
 
-O desconto médio é maior nessas subcategorias problemáticas, mas não explica sozinho o resultado negativo — o problema não é só desconto.
+---
 
-![Evolução de vendas por categoria](images/evolucao_categorias.png)
+### 5. Sales peak consistently in Q4 every year
 
-### Sazonalidade
+![Monthly Seasonality](images/ss_chart5_seasonality.png)
 
-As vendas são mais baixas em janeiro e fevereiro, e sobem consistentemente no último trimestre (setembro a dezembro), provavelmente puxadas por compras de fim de ano.
+All four years show the same seasonal pattern: sales drop in January–February and climb sharply from September through December. The Q4 surge is consistent and predictable — a clear opportunity for targeted inventory and promotional planning ahead of the peak period.
 
-## Conclusão
+---
 
-A empresa apresenta crescimento consistente, mas existem oportunidades claras de melhorar a eficiência financeira. A análise identificou onde está o problema: as subcategorias Tables (-17,7 mil de Profit) e Bookcases (-3,4 mil de Profit) estão gerando perdas que puxam a margem geral para baixo. Já Chairs (+26,5 mil de Profit) e a categoria Technology mostram que é possível crescer com rentabilidade — ou seja, o problema não é estrutural, é pontual.
+### 6. Top 10 products by revenue
 
-A partir disso, vamos:
+![Top 10 Products](images/ss_chart6_top10.png)
 
-- **Revisar as políticas de preços e descontos de Tables e Bookcases**, já que essas subcategorias têm vendas relevantes mas estão no vermelho — o ajuste aqui tem potencial direto de reverter prejuízo em lucro.
-- **Direcionar mais investimento e atenção para Technology e Chairs**, replicando o que está funcionando nelas para o resto do portfólio.
-- Com essas duas ações, a meta é **elevar a margem de lucro para além dos 12% atuais** nos próximos ciclos, sem depender apenas de vender mais.
+The highest-revenue products are dominated by Technology items (phones, copiers, machines). This reinforces the category-level finding: Technology is the company's most commercially successful segment.
 
-## Estrutura do repositório
+---
+
+## Conclusion & Recommendations
+
+The company has consistent growth, but the flat margin (~12%) indicates scale without efficiency improvement. The analysis pinpoints exactly where value is being lost:
+
+- **Revise pricing and discount policies for Tables and Bookcases** — these sub-categories generate real losses that pull the overall margin down. Fixing them has direct profit impact without needing more volume.
+- **Double down on Technology and Chairs** — both grow healthily and profitably. Replicating what works here across the rest of the portfolio is the clearest path to margin improvement.
+- **Use Q4 seasonality proactively** — prepare inventory and campaigns ahead of September, when demand consistently begins its annual surge.
+
+The target: **push profit margin above 12%** through efficiency gains, not just volume growth.
+
+---
+
+## Project Structure
 
 ```
+superstore-sales-analysis
+│
 ├── data/
-│   └── Sample - Superstore.csv       # Dataset original utilizado na análise
+│   └── Sample - Superstore.csv
+│
 ├── notebooks/
-│   ├── 01_eda.ipynb                  # Análise Exploratória de Dados inicial e limpeza
-│   ├── 02_category_analysis.ipynb    # Investigação profunda de Categorias e Subcategorias
-│   └── 03_time_analysis.ipynb        # Análise de Tendências Temporais e Sazonalidade
+│   ├── 01_eda.ipynb               — Initial exploration, data cleaning, totals
+│   ├── 02_category_analysis.ipynb — Category & sub-category deep dive
+│   └── 03_time_analysis.ipynb     — Temporal trends and seasonality
+│
 ├── images/
-│   └── ...                           # Gráficos exportados utilizados no relatório
-└── README.md                         # Documentação do projeto
+│   ├── ss_chart1_annual.png
+│   ├── ss_chart2_margin.png
+│   ├── ss_chart3_furniture.png
+│   ├── ss_chart4_categories.png
+│   ├── ss_chart5_seasonality.png
+│   └── ss_chart6_top10.png
+│
+└── README.md
 ```
 
-## Ferramentas utilizadas
+---
 
-- Python
-- Pandas
-- Matplotlib
+## Dataset
+
+- **Source:** [Superstore Sales Dataset — Kaggle](https://www.kaggle.com/datasets/vivek468/superstore-dataset-final)
+- **Records:** 9,994 rows × 21 columns
+- **Period:** 2014–2017
+- **No null values or duplicate records found**
+
+---
+
+## Tools Used
+
+- Python — Pandas, Matplotlib
 - Google Colab
-
-## Como executar
-
-1. Clone o repositório
-2. Abra qualquer um dos notebooks em `notebooks/` no Google Colab ou Jupyter
-3. Ajuste o caminho de leitura do CSV para `data/Sample - Superstore.csv`
-4. Execute as células em ordem
-
-Cada notebook é independente e pode ser executado sozinho — todos incluem os imports e o carregamento do dataset no início.
+- GitHub
