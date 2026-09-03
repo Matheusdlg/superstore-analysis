@@ -1,121 +1,93 @@
-# Superstore Project — Sales and Profitability Analysis
+# Superstore Sales & Profitability Analysis
+Exploratory analysis of retail sales data (2014–2017) investigating whether revenue growth translated into real profitability gains.
 
-Exploratory analysis of Superstore sales data (2014–2017), focused on understanding not just how much the company sells, but whether that growth translates into healthy profitability.
+## Business Question
 
-## Business question
-
-The company sells a lot, but is it turning that into profit efficiently? Or is sales growth masking profitability problems in specific parts of the business?
+The company sells a lot — but is it actually becoming more profitable, or just selling more of the same?
 
 ---
 
 ## Key Findings
 
-### 1. Sales, profit, and quantity grew year over year
+### 1. Sales, quantity and profit all grew — but not efficiency
 
-![Annual Sales, Quantity and Profit](images/ss_chart1_annual.png)
+![Annual Performance](images/ss_chart1_annual.png)
 
-| Year | Sales   | Quantity | Profit |
-|------|---------|----------|--------|
-| 2014 | 484,247 | 7,581    | 49,543 |
-| 2015 | 470,532 | 7,979    | 61,618 |
-| 2016 | 609,205 | 9,837    | 81,795 |
-| 2017 | 733,215 | 12,476   | 93,439 |
-
-Growth accelerates from 2016 onward and is accompanied by a real increase in units sold — not just a price effect.
+Revenue grew from **$484k (2014)** to **$733k (2017)**, a 51% increase over four years. Quantity sold rose proportionally, confirming this is real volume growth — not just price inflation. Profit followed the same upward trend.
 
 ---
 
-### 2. Profit margin, however, stayed flat (~12%)
+### 2. Profit margin stayed flat at ~12% throughout
 
 ![Profit Margin by Year](images/ss_chart2_margin.png)
 
-| Year | Margin |
-|------|--------|
-| 2014 | 11.81% |
-| 2015 | 11.75% |
-| 2016 | 12.97% |
-| 2017 | 11.59% |
-
-This shows the company grew in **scale**, but not in **efficiency**: profit went up because more was sold, not because each sale became more profitable.
+Despite consistent revenue growth, profit margin hovered around **11–13% every year**. The company scaled its operations but did not improve financial efficiency — every dollar of revenue kept generating roughly the same profit. This signals an opportunity: fixing low-margin segments could unlock gains without needing more sales volume.
 
 ---
 
-### 3. The problem is concentrated in Furniture
+### 3. The profitability problem is concentrated in Furniture
 
-![Profit by Furniture Subcategory](images/ss_chart3_furniture.png)
+![Profit by Furniture Sub-Category](images/ss_chart3_furniture.png)
 
-- **Technology**: highest sales volume and good margin — healthy growth
-- **Office Supplies**: balanced behavior across sales, profit, and margin
-- **Furniture**: high sales volume, but compromised profitability
+Furniture has solid sales but a critical profitability issue at the sub-category level:
 
-Within Furniture, at the subcategory level:
+- **Tables**: **-$17,700** in total profit — the biggest drag on the business
+- **Bookcases**: **-$3,400** in total profit
+- **Chairs**: **+$26,500** — profitable and high-volume
+- **Furnishings**: positive, smaller scale
 
-- **Chairs**: highest volume, positive profit (+26.5k)
-- **Furnishings**: lower sales, positive profit
-- **Bookcases**: negative profit (-3.4k)
-- **Tables**: significant loss (-17.7k)
-
-Average discount is higher in these problematic subcategories, but discount alone doesn't explain the negative result.
+Tables and Bookcases are actively destroying value. The initial hypothesis was that discounts could be driving the losses — and the data partially confirmed it: sub-categories with higher discounts did show worse profit. However, the average discount across the dataset was ~15%, and discount alone doesn't fully explain the negative margins. The underlying cost structure is also a factor.
 
 ---
 
-### 4. Category trajectories diverge over time
+### 4. Technology leads growth; Furniture lags behind
 
 ![Sales Evolution by Category](images/ss_chart4_categories.png)
 
-Technology and Office Supplies show steady, healthy growth year over year. Furniture's trajectory is more volatile and lags behind the other two categories — reinforcing that its profitability issue isn't a one-off, but a sustained pattern across the analyzed period.
+Technology grew the fastest and showed the best profit margin among all three categories — a clear contrast with Furniture, which grew in sales volume but without the profitability to match. Office Supplies showed the most balanced behavior across sales, profit, and margin. The key insight: growth was distributed across all categories, but the quality of that growth varied significantly between them.
 
 ---
 
-### 5. Clear seasonality, concentrated in Q4
+### 5. Sales peak consistently in Q4 every year
 
 ![Monthly Seasonality](images/ss_chart5_seasonality.png)
 
-Sales are lowest in January and February, and rise consistently in the last quarter (September–December), likely driven by year-end purchases. This pattern repeats across the years in the dataset, suggesting it's structural and can be planned for.
+All four years show the same seasonal pattern: sales drop in January–February and climb sharply from September through December. The Q4 surge is consistent and predictable — a clear opportunity for targeted inventory and promotional planning ahead of the peak period.
 
 ---
 
-### 6. A handful of products drive a disproportionate share of sales
+### 6. Top 10 products by revenue
 
-![Top 10 Products by Sales](images/ss_chart6_top10.png)
+![Top 10 Products](images/ss_chart6_top10.png)
 
-The Canon imageCLASS 2200 Advanced Copier alone generated $61,600 in sales — more than double the second-place item. The top 10 list is dominated by office equipment (copiers, binding systems, printers) rather than everyday office supplies, suggesting that a small set of high-ticket items plays an outsized role in overall revenue.
-
----
-
-## Conclusion
-
-The company shows consistent growth, but there are clear opportunities to improve financial efficiency. The analysis pinpointed the problem: the Tables (-17.7k profit) and Bookcases (-3.4k profit) subcategories are generating losses that drag down the overall margin. Meanwhile, Chairs (+26.5k profit) and the Technology category show that growing profitably is possible — the problem isn't structural, it's specific.
-
-Based on this, next steps would be to:
-
-- **Review pricing and discount policy for Tables and Bookcases**, since these subcategories have relevant sales volume but are in the red — fixing this has direct potential to turn losses into profit.
-- **Direct more investment and attention toward Technology and Chairs**, replicating what's working there across the rest of the portfolio.
-- With these two actions, the goal is to **raise the profit margin beyond the current 12%** in upcoming cycles, without relying solely on higher sales volume.
+The highest-revenue products are dominated by Technology items (phones, copiers, machines). This reinforces the category-level finding: Technology is the company's most commercially successful segment.
 
 ---
 
-## About the dataset
+## Conclusion & Recommendations
 
-- **9,994 rows** and **21 columns**
-- No null values and no duplicate records
-- Each row represents an item within an order (a single `Order ID` can repeat when an order contains more than one product)
-- This is the classic **Sample Superstore** dataset (widely used for Tableau/Power BI practice, sourced from Kaggle), not real company data
+The company has consistent growth, but the flat margin (~12%) indicates scale without efficiency improvement. The analysis pinpoints exactly where value is being lost:
+
+- **Revise pricing and discount policies for Tables and Bookcases** — these sub-categories generate real losses that pull the overall margin down. Fixing them has direct profit impact without needing more volume.
+- **Double down on Technology and Chairs** — both grow healthily and profitably. Replicating what works here across the rest of the portfolio is the clearest path to margin improvement.
+- **Use Q4 seasonality proactively** — prepare inventory and campaigns ahead of September, when demand consistently begins its annual surge.
+
+The target: **push profit margin above 12%** through efficiency gains, not just volume growth.
 
 ---
 
-## Repository structure
+## Project Structure
 
 ```
-superstore-analysis
+superstore-sales-analysis
 │
 ├── data/
-│   └── Sample - Superstore.csv       # Original dataset used in the analysis
+│   └── Sample - Superstore.csv
 │
 ├── notebooks/
-│   ├── 01_eda.ipynb                  # Initial exploratory data analysis and cleaning
-│   ├── 02_category_analysis.ipynb    # Deep dive into categories and subcategories
-│   └── 03_time_analysis.ipynb        # Time trend and seasonality analysis
+│   ├── 01_eda.ipynb               — Initial exploration, data cleaning, totals
+│   ├── 02_category_analysis.ipynb — Category & sub-category deep dive
+│   └── 03_time_analysis.ipynb     — Temporal trends and seasonality
 │
 ├── images/
 │   ├── ss_chart1_annual.png
@@ -130,18 +102,17 @@ superstore-analysis
 
 ---
 
-## Tools used
+## Dataset
 
-- Python
-- Pandas
-- Matplotlib
-- Google Colab
+- **Source:** [Superstore Sales Dataset — Kaggle](https://www.kaggle.com/datasets/vivek468/superstore-dataset-final)
+- **Records:** 9,994 rows × 21 columns
+- **Period:** 2014–2017
+- **No null values or duplicate records found**
 
 ---
 
-## How to run
+## Tools Used
 
-1. Clone the repository
-2. Open `notebooks/01_eda.ipynb` in Google Colab or Jupyter (then `02_category_analysis.ipynb` and `03_time_analysis.ipynb`, in order)
-3. Adjust the CSV read path to `data/Sample - Superstore.csv`
-4. Run the cells in order
+- Python — Pandas, Matplotlib
+- Google Colab
+- GitHub
