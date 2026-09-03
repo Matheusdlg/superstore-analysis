@@ -64,7 +64,7 @@ The highest-revenue products are dominated by Technology items (phones, copiers,
 
 ---
 
-## Conclusion & Recommendations
+## Conclusion
 
 The company has consistent growth, but the flat margin (~12%) indicates scale without efficiency improvement. The analysis pinpoints exactly where value is being lost:
 
@@ -111,8 +111,11 @@ superstore-sales-analysis
 
 ---
 
-## Tools Used
+## Python Skills Demonstrated
 
-- Python — Pandas, Matplotlib
-- Google Colab
-- GitHub
+- Data loading with encoding handling (`windows-1252`)
+- Date parsing and feature extraction with `pandas` (`dt.year`, `dt.month`)
+- Groupby aggregations for temporal and categorical analysis
+- Derived metric creation (`Profit Margin = Profit / Sales`)
+- Exploratory Data Analysis (EDA) workflow
+- Data visualization with `Matplotlib` — bar charts, line charts, horizontal bar charts
